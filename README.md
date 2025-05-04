@@ -15,15 +15,25 @@ _If deployed, you can add your Netlify, Vercel, or GitHub Pages link here._
 •	📤 Export sheet design as: SVG, PNG, DXF (AutoCAD Drawing Exchange Format)
 
 🗂️ Project Structure
+
 my-app/
+
 ├── node_modules/
+
 ├── public/
+
 │   ├── favicon.ico
+
 │   ├── index.html
+
 │   ├── logo192.png
+
 │   ├── logo512.png
+
 │   ├── manifest.json
+
 │   └── robots.txt
+
 ├── src/
 │   ├── components/
 │   │   ├── FoldLineControls.js
