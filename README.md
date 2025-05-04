@@ -77,10 +77,7 @@ How to build the project (npm run build)
 
 🧪 To Do / Future Enhancements
 •	Add undo/redo support
-•	Add labeling for fold lines![Screenshot 2025-05-04 202632](https://github.com/user-attachments/assets/2253d9fc-af05-4a9d-8e04-1d305ff8431d)
-![Screenshot 2025-05-04 202619](https://github.com/user-attachments/assets/a30f4466-739d-494e-a341-9169dd1bdc65)
-![Screenshot 2025-05-04 202537](https://github.com/user-attachments/assets/0c5308e7-856a-44ab-a0e7-af59ec316040)
-![Screenshot 2025-05-04 202302](https://github.com/user-attachments/assets/ca73b62b-e364-4d36-bf13-923bb5407860)
+•	Add labeling for fold lines
 
 •	Export to PDF
 •	Responsive/mobile layout
@@ -91,3 +88,15 @@ This project is for educational and assessment purposes. All rights reserved to 
 🤝 Connect
 If you have any feedback or suggestions, feel free to reach out via GitHub or LinkedIn.
 GitHub: https://github.com/Ateeq1997
+
+📸 UI-Screenshots
+![Screenshot 2025-05-04 202302](https://github.com/user-attachments/assets/667190e2-f868-4262-853c-a1268c4dfd33)
+
+![Screenshot 2025-05-04 202537](https://github.com/user-attachments/assets/e2593334-8724-4632-92bc-8918edf28f17)
+
+![Screenshot 2025-05-04 202619](https://github.com/user-attachments/assets/5ead587a-60cc-428e-a006-d895021a6902)
+
+![Screenshot 2025-05-04 202632](https://github.com/user-attachments/assets/78e54341-f1fa-4254-992d-8780c5da7541)
+
+
+
