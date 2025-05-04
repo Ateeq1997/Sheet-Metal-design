@@ -5,6 +5,7 @@ A web-based application built with React.js that allows users to visually create
 👨💻 Developed by Ateeq ur Rehman
 🌐 Live Preview
 _If deployed, you can add your Netlify, Vercel, or GitHub Pages link here._
+
 ✨ Features
 •	📏 Set custom Length and Width of the sheet.
 •	📐 Add multiple Fold Lines dynamically.
@@ -12,8 +13,8 @@ _If deployed, you can add your Netlify, Vercel, or GitHub Pages link here._
 •	🖱️ Pan around the design with click-and-drag.
 •	💾 Save and Load designs from Local Storage.
 •	📤 Export sheet design as: SVG, PNG, DXF (AutoCAD Drawing Exchange Format)
-🗂️ Project Structure
 
+🗂️ Project Structure
 my-app/
 ├── node_modules/
 ├── public/
@@ -59,11 +60,8 @@ Installation
 
 ✅ Setup Instructions:
 Prerequisites
-
 How to install dependencies
-
 How to start the development server (npm start)
-
 How to build the project (npm run build)
 
 📂 Folder Details
@@ -71,17 +69,21 @@ How to build the project (npm run build)
 - SheetPreview.js – Renders the actual sheet metal design with zoom and pan.
 - App.js – Main component that integrates controls, canvas, and export options.
 - App.css – Custom styles.
+
 📦 Built With
 •	React.js
 •	canvg – For rendering SVG to PNG
 •	Vanilla CSS
+
 🧪 To Do / Future Enhancements
 •	Add undo/redo support
 •	Add labeling for fold lines
 •	Export to PDF
 •	Responsive/mobile layout
+
 📜 License
 This project is for educational and assessment purposes. All rights reserved to Ateeq ur Rehman.
+
 🤝 Connect
 If you have any feedback or suggestions, feel free to reach out via GitHub or LinkedIn.
 GitHub: https://github.com/Ateeq1997
