@@ -14,6 +14,7 @@ _If deployed, you can add your Netlify, Vercel, or GitHub Pages link here._
 •	💾 Save and Load designs from Local Storage.
 •	📤 Export sheet design as: SVG, PNG, DXF (AutoCAD Drawing Exchange Format)
 
+
 🗂️ Project Structure
 
 my-app/
@@ -35,20 +36,35 @@ my-app/
 │   └── robots.txt
 
 ├── src/
+
 │   ├── components/
+
 │   │   ├── FoldLineControls.js
+
 │   │   └── SheetPreview.js
+
 │   ├── App.css
+
 │   ├── App.js
+
 │   ├── App.test.js
+
 │   ├── index.css
+
 │   ├── index.js
+
 │   ├── logo.svg
+
 │   ├── reportWebVitals.js
+
 │   └── setupTests.js
+
 ├── .gitignore
+
 ├── package-lock.json
+
 ├── package.json
+
 └── README.md
 
 
