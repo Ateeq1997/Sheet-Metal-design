@@ -3,8 +3,10 @@ A web-based application built with React.js that allows users to visually create
 
 🔧 Assessment Project for Techozon Software House
 👨💻 Developed by Ateeq ur Rehman
+
+
 🌐 Live Preview
-_If deployed, you can add your Netlify, Vercel, or GitHub Pages link here._
+https://sheet-metal-design.vercel.app/
 
 ✨ Features
 •	📏 Set custom Length and Width of the sheet.
