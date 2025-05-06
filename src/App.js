@@ -2,14 +2,17 @@ import React, { useState, useRef } from 'react';
 import './App.css';
 import FoldLineControls from './components/FoldLineControls';
 import SheetPreview from './components/SheetPreview';
-import { Canvg } from 'canvg';
+import { Canvg } from 'canvg'; //A library that converts SVG to canvas, used to make PNG files.
 
 
-
+//State declaration
 function App() {
   const [length, setLength] = useState(200);
   const [width, setWidth] = useState(100);
-  const [foldLines, setFoldLines] = useState([]); 
+  const [foldLines, setFoldLines] = useState([    // Foldlines array is here 
+    { position: 100, direction: 'inward' },
+    { position: 300, direction: 'outward' }
+  ]);
   const [sheetSize, setSheetSize] = useState({ width: 500, height: 300 });
   const [newFold, setNewFold] = useState('');
   const svgRef = useRef(null);
@@ -17,11 +20,11 @@ function App() {
 const [pan, setPan] = useState({ x: 0, y: 0 }); // Position of the pan (x, y)
 
   
-
+// Functions for downloadSVG
   const downloadSVG = () => {
     const svg = svgRef.current;
     const svgData = new XMLSerializer().serializeToString(svg);
-    const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' }); //Converts the SVG into a Blob, then triggers a download
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -29,16 +32,17 @@ const [pan, setPan] = useState({ x: 0, y: 0 }); // Position of the pan (x, y)
     link.click();
   };
 
+  // function for DownloadPNG
   const downloadPNG = async () => {
-    const svg = svgRef.current;
-    const svgData = new XMLSerializer().serializeToString(svg);
+    const svg = svgRef.current; //Converts SVG to a canvas, then to a PNG image, and downloads it.
+    const svgData = new XMLSerializer().serializeToString(svg); 
 
     const canvas = document.createElement('canvas');
     canvas.width = length;
     canvas.height = width;
 
     const ctx = canvas.getContext('2d');
-    const v = await Canvg.fromString(ctx, svgData);
+    const v = await Canvg.fromString(ctx, svgData); //Uses canvg for SVG-to-canvas rendering.
     await v.render();
 
     const pngUrl = canvas.toDataURL('image/png');
@@ -49,16 +53,18 @@ const [pan, setPan] = useState({ x: 0, y: 0 }); // Position of the pan (x, y)
     link.click();
   };
 
-  const saveDesign = () => {
+  // Function saveDesign
+  const saveDesign = () => {  //Saves design values (length, width, folds) into browser localStorage.
     const design = {
       length,
       width,
       foldLines,
     };
-    localStorage.setItem('sheetDesign', JSON.stringify(design));
+    localStorage.setItem('sheetDesign', JSON.stringify(design)); //JSON is used to serialize the object.
     alert('Design saved!');
   };
   
+  // Function LoadDesign
   const loadDesign = () => {
     const data = localStorage.getItem('sheetDesign');
     if (data) {
@@ -66,13 +72,14 @@ const [pan, setPan] = useState({ x: 0, y: 0 }); // Position of the pan (x, y)
       setLength(design.length);
       setWidth(design.width);
       setFoldLines(design.foldLines);
-      alert('Design loaded!');
+      alert('Design loaded!'); // Loads design from localStorage and updates the state.
     } else {
       alert('No saved design found.');
     }
   };
 
-  const downloadDXF = () => {
+  // Function downloadDXF
+  const downloadDXF = () => { //Creates a DXF file (used in CAD software like AutoCAD).
     const header = `0
   SECTION
   2
@@ -111,8 +118,8 @@ const [pan, setPan] = useState({ x: 0, y: 0 }); // Position of the pan (x, y)
     let dxfContent = header;
   
     // Add lines for fold lines
-    foldLines.forEach((pos) => {
-      dxfContent += `
+    foldLines.forEach((pos) => {   //Converts fold line data into DXF LINE commands.
+      dxfContent += `     
   0
   LINE
   8
@@ -120,7 +127,7 @@ const [pan, setPan] = useState({ x: 0, y: 0 }); // Position of the pan (x, y)
   10
   ${pos}
   20
-  0.0
+  0.0    
   30
   0.0
   10
@@ -135,28 +142,28 @@ const [pan, setPan] = useState({ x: 0, y: 0 }); // Position of the pan (x, y)
   
     // Convert content to a Blob and initiate download
     const blob = new Blob([dxfContent], { type: 'application/dxf' });
-    const link = document.createElement('a');
+    const link = document.createElement('a'); 
     link.href = URL.createObjectURL(blob);
     link.download = 'sheet-design.dxf';
     link.click();
   };
   
-  // Zoom In
+  // Function Zoom In
 const zoomIn = () => {
   setZoom(zoom + 0.1);
 };
 
-// Zoom Out
+//  Function Zoom Out
 const zoomOut = () => {
   setZoom(Math.max(zoom - 0.1, 0.1)); // Prevent zooming out too far
 };
 
 // Handle Pan (Move Canvas)
-const handleMouseDown = (e) => {
+const handleMouseDown = (e) => {   // Lets you drag the canvas with your mouse (pan)
   const startX = e.clientX;
   const startY = e.clientY;
 
-  const onMouseMove = (moveEvent) => {
+  const onMouseMove = (moveEvent) => {  //Listens to mouse down, move, and up events.
     const deltaX = moveEvent.clientX - startX;
     const deltaY = moveEvent.clientY - startY;
     setPan((prevPan) => ({
@@ -197,26 +204,29 @@ const handleMouseDown = (e) => {
         </label>
       </div>
 
-      <FoldLineControls
+      <FoldLineControls                    // importing  FoldLine component and its Props
         foldLines={foldLines}
         setFoldLines={setFoldLines}
         newFold={newFold}
         setNewFold={setNewFold}
       />
 
-      <SheetPreview
+      <SheetPreview                         // importing SheetPreview component and its Props
         length={length}
         width={width}
         foldLines={foldLines}
         setFoldLines={setFoldLines}
         svgRef={svgRef}
         zoom={zoom}
+        setZoom={setZoom}  // ✅ Pass setZoom
   pan={pan}
+  setPan={setPan}  // ✅ Pass setPan here
   onMouseDown={handleMouseDown}
       />
 
-<div className="actions">
-  <button onClick={downloadSVG}>Download as SVG</button>
+
+<div className="actions">     
+  <button onClick={downloadSVG}>Download as SVG</button> 
   <button onClick={downloadPNG}>Download as PNG</button>
   <button onClick={saveDesign}>💾 Save Design</button>
   <button onClick={loadDesign}>📂 Load Design</button>

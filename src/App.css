@@ -221,3 +221,9 @@ button {
     align-items: flex-start;
   }
 }
+.svg-preview {
+  border: 1px solid black;
+  background: white;
+  display: block;
+  margin: 20px auto;
+}
